@@ -3,7 +3,7 @@ import theme from "./theme.js";
 import plugins from "./plugins";
 
 export default defineUserConfig({
-  base: "/",
+  base: "/zar_blog/",
   locales: {
     "/": {
       lang: "zh-CN",
