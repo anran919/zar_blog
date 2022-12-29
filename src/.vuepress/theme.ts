@@ -10,6 +10,14 @@ export default hopeTheme({
         url: "https://github.com/anran919",
     },
 
+    themeColor: {
+        pink: "#FF1493",
+        blue: "#2196f3",
+        red: "#f26d6d",
+        green: "#3eaf7c",
+        orange: "#fb9b5f",
+    },
+
     iconAssets: "iconfont",
 
     logo: "/logo.svg",
@@ -19,7 +27,11 @@ export default hopeTheme({
     docsDir: "docs",
 
     pageInfo: ["Author", "Original", "Date", "Category", "Tag", "ReadingTime"],
-
+    navbarLayout: {
+        left: ["Brand"],
+        center: [],
+        right: ["Links","Language", "Repo", "Outlook", "Search"],
+    },
     blog: {
         medias: {
             Gmail: "https://www.google.com.hk/",
