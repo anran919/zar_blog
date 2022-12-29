@@ -1,7 +1,10 @@
 ---
 title: Java设计模式.md
 date: 2017-02-17 11:25:59
-tags:
+category:
+  - Java
+tag:
+  - Java
 ---
 
 ## 设计原则 ##

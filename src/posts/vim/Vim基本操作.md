@@ -1,7 +1,10 @@
 ---
 title: Vim基本操作
 date: 2017-02-22 11:33:14
-tags: Vim
+category:
+  - Vim
+tag:
+  - Vim
 ---
 
 ## vim的基本操作

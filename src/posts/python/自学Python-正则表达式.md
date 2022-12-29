@@ -1,7 +1,10 @@
 ---
 title: 自学Python-正则表达式
 date: 2017-01-14 10:46:38
-tags: Python
+category:
+  - Python
+tag:
+  - Python
 ---
 ## 正则表达式 ##
 

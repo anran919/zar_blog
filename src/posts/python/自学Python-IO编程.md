@@ -1,7 +1,10 @@
 ---
 title: 自学Python-IO编程
 date: 2017-01-13 09:30:18
-tags: Python
+category:
+  - Python
+tag:
+  - Python
 ---
 ## 读文件 ##
 

@@ -1,7 +1,10 @@
 ---
 title: 自学Python-模块
 date: 2017-01-11 17:35:35
-tags: Python
+category:
+  - Python
+tag:
+  - Python
 ---
 ### 使用模块 ###
 

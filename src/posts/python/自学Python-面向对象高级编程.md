@@ -1,7 +1,10 @@
 ---
 title: 自学Python-面向对象高级编程
 date: 2017-01-12 14:30:26
-tags: Python
+category:
+  - Python
+tag:
+  - Python
 ---
 ## 使用__slots__ ##
 

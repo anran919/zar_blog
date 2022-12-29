@@ -1,6 +1,8 @@
 ---
 title: Android-读取XML中的配置参数工具类XMLUtil
 date: 2017-01-20 10:22:04
+category:
+  - Java
 tags: 
   - Android
 ---

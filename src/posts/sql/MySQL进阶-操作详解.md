@@ -1,7 +1,10 @@
 ---
 title: MySQL基本操作.md
 date: 2017-02-17 11:25:59
-tags: MySQL
+category:
+  - MySQL
+tag:
+  - MySQL
 ---
 
 ### MySQL基本操作###

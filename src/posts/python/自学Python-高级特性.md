@@ -1,7 +1,10 @@
 ---
 title: 自学Python-高级特性
 date: 2017-01-11 09:23:15
-tags: Python
+category:
+  - Python
+tag:
+  - Python
 ---
 ## 切片 ##
 使用场景： 取一个list或者tuple的部分元素

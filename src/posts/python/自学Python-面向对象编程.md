@@ -1,7 +1,10 @@
 ---
 title: 自学Python-面向对象编程
 date: 2017-01-11 19:38:56
-tags: Python
+category:
+  - Python
+tag:
+  - Python
 ---
 
 ### 类 ###

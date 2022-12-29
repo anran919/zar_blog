@@ -1,7 +1,10 @@
 ---
 title: 日常笔记.md
 date: 2017-01-09 17:59:29
-tags: 笔记
+category:
+  - Android
+tag:
+  - Android
 ---
 ## 遇到的问题 ##
 

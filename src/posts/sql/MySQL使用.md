@@ -1,7 +1,10 @@
 ---
 title: MySQL使用.md
 date: 2017-01-20 10:22:04
-tags: MySQL
+category:
+  - MySQL
+tag:
+  - MySQL
 ---
 
 ## ubuntu下使用MySQL ##

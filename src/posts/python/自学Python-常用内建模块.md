@@ -1,7 +1,10 @@
 ---
 title: 自学Python-常用内建模块
 date: 2017-01-14 12:03:14
-tags: Python
+category:
+  - Python
+tag:
+  - Python
 ---
 ## Python内建模块 ##
 

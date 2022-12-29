@@ -38,7 +38,6 @@ export default hopeTheme({
             BiliBili: "https://www.bilibili.com/",
             GitHub: "https://github.com/anran919",
             Email: "https://163.com",
-            // Baidu: "https://example.com",
             // Bitbucket: "https://example.com",
             // Dingding: "https://example.com",
             // Discord: "https://example.com",
@@ -48,7 +47,6 @@ export default hopeTheme({
             // Flipboard: "https://example.com",
             // Gitee: "https://example.com",
             // Gitlab: "https://example.com",
-
             // Instagram: "https://example.com",
             // Lark: "https://example.com",
             // Lines: "https://example.com",
@@ -90,7 +88,7 @@ export default hopeTheme({
 
             blog: {
                 description: "一个前端开发者",
-                intro: "/zh/intro.html",
+                intro: "/intro.html",
             },
 
             // page meta
@@ -111,7 +109,7 @@ export default hopeTheme({
 
             blog: {
                 description: "A FrontEnd programmer",
-                intro: "/intro.html",
+                intro: "/en/intro.html",
             },
 
             metaLocales: {
@@ -123,6 +121,9 @@ export default hopeTheme({
 
     encrypt: {
         config: {
+            // 这会加密整个 guide 目录，并且两个密码都是可用的
+            "/posts/encrypt/": ["ef123456","123456"],
+            // 加密单个文件
             "/demo/encrypt.html": ["1234"],
             "/zh/demo/encrypt.html": ["1234"],
         },

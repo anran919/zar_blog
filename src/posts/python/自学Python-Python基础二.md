@@ -1,7 +1,10 @@
 ---
 title: 自学Python-Python基础二
 date: 2017-01-10 15:06:47
-tags: Python
+category:
+  - Python
+tag:
+  - Python
 ---
 ## 使用list和tuple ##
 ### list集合 ###

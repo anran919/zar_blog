@@ -1,7 +1,10 @@
 ---
 title: 自学Python- 函数
 date: 2017-01-10 16:30:36
-tags: Python
+category:
+  - Python
+tag:
+  - Python
 ---
 ### 调用函数 ###
 Python内置了很多有用的函数，我们可以直接调用。

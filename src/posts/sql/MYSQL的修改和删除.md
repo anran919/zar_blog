@@ -1,7 +1,10 @@
 ---
 title: MySql的修改和删除.md
 date: 2017-02-17 11:25:59
-tags: MySQL
+category:
+  - MySQL
+tag:
+  - MySQL
 ---
 
 ### 数据库的修改和删除 ###

@@ -1,7 +1,10 @@
 ---
 title: 自学Python-函数式编程.md
 date: 2017-01-11 14:01:12
-tags: Python
+category:
+  - Python
+tag:
+  - Python
 ---
 
 ## 高阶函数 ##

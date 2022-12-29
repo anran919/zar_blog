@@ -1,7 +1,10 @@
 ---
 title: 自学Python-线程和进程
 date: 2017-01-13 15:05:52
-tags: Python
+category:
+  - Python
+tag:
+  - Python
 ---
 ### multiprocessing ###
 windows 创建多线程使用 `multiprocessing`
