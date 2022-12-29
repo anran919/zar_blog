@@ -1,6 +1,7 @@
 ---
 icon: Android
 date: 2022-01-09
+title: Android基础知识总结
 category:
   - Android
 tag:
@@ -69,9 +70,9 @@ tag:
 - onSaveInstanceState() 会在onStop()前执行,但不保证是在onPause之前还是之后触发
 
 
-** 代码 **
-
-    private static final String TAG = "MainActivity";
+**代码**
+```java
+private static final String TAG = "MainActivity";
     private static final String SAVE_KEY ="save_key" ;
 
     @Override
@@ -96,8 +97,8 @@ tag:
         super.onSaveInstanceState(outState, outPersistentState);
         outState.putString(SAVE_KEY,"保存字符串");
     }
+```
 
-----
 
 ###  Intent
  - Intent可以传递的数据类型:

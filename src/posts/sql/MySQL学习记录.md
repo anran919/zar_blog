@@ -957,7 +957,7 @@ order by timestampdiff(DAY, hire_date, now());
 
 
 
--- 8. 查询产生一下结果 <last_name> earns <salary> ,'monthly but wants ' <salary*3>
+-- 8. 查询产生一下结果 ``<last_name> earns <salary> ,'monthly but wants ' <salary*3>``
 
 ```mysql
 select concat_ws(' ', last_name, 'earns', truncate(salary, 0), 'monthly but wants ',

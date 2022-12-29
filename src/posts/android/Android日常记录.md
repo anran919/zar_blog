@@ -19,18 +19,19 @@ tags: 笔记
 
 #### 选择方法 ####
 	1. 布局问题
-    package com.dy.dyth.view;
+```java
+package com.dy.dyth.view;
 
-    import android.content.Context;
-    import android.support.annotation.Nullable;
-    import android.support.v7.widget.RecyclerView;
-    import android.util.AttributeSet;
+import android.content.Context;
+import android.support.annotation.Nullable;
+import android.support.v7.widget.RecyclerView;
+import android.util.AttributeSet;
 
-    /**
-     * Created by lph on 2016/8/17.
-     * adapter TV
-     */
-    public class TvRecyclerView extends RecyclerView {
+/**
+ * Created by lph on 2016/8/17.
+ * adapter TV
+ */
+public class TvRecyclerView extends RecyclerView {
     public TvRecyclerView(Context context) {
         this(context,null);
     }
@@ -62,6 +63,7 @@ tags: 笔记
         return super.getChildDrawingOrder(childCount, i);
     }
 }
+```
 
 ## 问题
 #### 首页焦点在滑动过程中错位 ####
