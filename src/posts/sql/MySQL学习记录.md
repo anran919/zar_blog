@@ -11,7 +11,7 @@ tag:
 # MySQl语句练习
 
 ### 使用数据库
-```mysql
+```sql
 show databases;
 use atguigudb;
 ```
@@ -19,14 +19,14 @@ use atguigudb;
 
 
 ### 重置密码
-```mysql
+```sql
 use mysql;
 ALTER USER 'root'@'localhost' IDENTIFIED BY '123456';
 ```
 
 
 
-```mysql
+```sql
 show tables;
 select *, first_name as f_name, last_name as l_name
 from employees;
@@ -34,7 +34,7 @@ from employees;
 
 
 
-```mysql
+```sql
 select distinct department_id
 from employees;
 ```
@@ -43,14 +43,14 @@ from employees;
 
 -- 计算年工资
 
-```mysql
+```sql
 select employee_id, salary "月工资", salary * (1 + IFNULL(commission_pct, 0)) * 12 "年工资", commission_pct
 from employees;
 ```
 
 
 
-```mysql
+```sql
 select * from `order`;
 ```
 
@@ -58,7 +58,7 @@ select * from `order`;
 
 --   查询常量
 
-```mysql
+```sql
 select *, 'hello'
 from `order`;
 ```
@@ -67,7 +67,7 @@ from `order`;
 
 -- 显示表结构
 
-```mysql
+```sql
 describe employees;
 DESC `employees`;
 ```
@@ -76,7 +76,7 @@ DESC `employees`;
 
 -- 去重
 
-```mysql
+```sql
 select distinct job_id
 from `employees`;
 ```
@@ -85,7 +85,7 @@ from `employees`;
 
 -- where
 
-```mysql
+```sql
 select *
 from employees;
 select *
@@ -100,7 +100,7 @@ where last_name = 'king'
 
 -- 计算12个月的总工资
 
-```mysql
+```sql
 select *, salary * 12 * (1 + IFNULL(commission_pct, 0)) "12月基本工资"
 from employees;
 ```
@@ -109,7 +109,7 @@ from employees;
 
 --  去除重复job_id
 
-```mysql
+```sql
 select distinct job_id
 from employees;
 ```
@@ -118,7 +118,7 @@ from employees;
 
 --  查询工资大于12000 的员工的工资和姓名
 
-```mysql
+```sql
 select *
 from employees
 where salary > 12000;
@@ -128,7 +128,7 @@ where salary > 12000;
 
 -- 查询工号为167的员工的姓名和部门号
 
-```mysql
+```sql
 select first_name, last_name, department_id
 from employees
 where employee_id = 167;
@@ -138,7 +138,7 @@ where employee_id = 167;
 
 -- 显示departments的表结构,并查询全部数据
 
-```mysql
+```sql
 desc departments;
 select *
 from departments;
@@ -147,7 +147,7 @@ from departments;
 
 
 ### 运算符
-```mysql
+```sql
 select 1 + 1, 4 * 5;
 select 1 + 1, 4 * 5
 from dual;
@@ -162,14 +162,14 @@ select 1 = '1', NULL = NULL;
 
 -- 最小 /最大
 
-```mysql
+```sql
 select LEAST(first_name, last_name)
 from employees;
 ```
 
 -- 范围查询
 
-```mysql
+```sql
 select *
 from employees
 where salary >= 6000 && salary <= 8000
@@ -180,7 +180,7 @@ order by salary;
 
 -- 模糊查询
 
-```mysql
+```sql
 select first_name
 from employees
 where first_name like '%ab%';
@@ -196,7 +196,7 @@ where last_name like '%a%'
 -- _ 代表一个字符
 -- 查询第二个字符是a的last_name
 
-```mysql
+```sql
 select first_name
 from employees
 where first_name like '_a%';
@@ -204,7 +204,7 @@ where first_name like '_a%';
 
 -- 查询第三个字符是c的last_name
 
-```mysql
+```sql
 select first_name
 from employees
 where first_name like '__c%';
@@ -212,7 +212,7 @@ where first_name like '__c%';
 
 -- 转义字符\,查询第二个字符是_,第三个字符是o
 
-```mysql
+```sql
 select last_name
 from employees
 where last_name like '_\_o%';
@@ -220,7 +220,7 @@ where last_name like '_\_o%';
 
 -- in(set) / not in(set)
 
-```mysql
+```sql
 select *
 from employees
 where salary in (12000, 13000, 14000)
@@ -238,7 +238,7 @@ order by salary;
 ### 运算符练习
 -- 1. 选择工资不在5000到12000的员工的姓名和工资
 
-```mysql
+```sql
 select first_name, salary
 from employees
 where not (salary > 5000 and salary < 12000)
@@ -247,7 +247,7 @@ order by salary desc;
 
 -- 2 查询 20号或者50号部门工作的员工,姓名和部门号
 
-```mysql
+```sql
 select first_name, department_id
 from employees
 where department_id in (20, 50);
@@ -255,7 +255,7 @@ where department_id in (20, 50);
 
 -- 3 选择公司中没有管理者的员工的姓名和job_id
 
-```mysql
+```sql
 select job_id, first_name, department_id
 from employees
 where department_id <=> null;
@@ -263,7 +263,7 @@ where department_id <=> null;
 
 -- 4. 选择公司中有奖金的员工姓名,工资和奖金级别
 
-```mysql
+```sql
 select last_name, salary, commission_pct
 from employees
 where not commission_pct <=> null;
@@ -274,7 +274,7 @@ where commission_pct is not null;
 
 -- 5. 查询员工姓名第三个字母是a的员工
 
-```mysql
+```sql
 select *
 from employees
 where last_name like '__a%';
@@ -282,7 +282,7 @@ where last_name like '__a%';
 
 -- 6. 查询员工姓名中有字母a和k的员工的姓名
 
-```mysql
+```sql
 select last_name
 from employees
 where last_name like '%a%k%'
@@ -295,7 +295,7 @@ where last_name like '%a%'
 
 -- 7 查询表employees first_name 以e结尾的员工信息
 
-```mysql
+```sql
 select first_name
 from employees
 where first_name like '%e';
@@ -303,7 +303,7 @@ where first_name like '%e';
 
 -- 8 查询表employees 部门编号在80-100之间的姓名和工种
 
-```mysql
+```sql
 select department_id, last_name, job_id
 from employees
 where department_id >= 80
@@ -313,7 +313,7 @@ order by department_id;
 
 -- 9. 查询表employees中manger_id是100,101,110的员工的姓名,工资,管理者id
 
-```mysql
+```sql
 select last_name, salary, manager_id
 from employees
 where manager_id in (100, 101, 110);
@@ -324,7 +324,7 @@ where manager_id in (100, 101, 110);
 ### 运算符练习
 
 ###  排序和分页
-```mysql
+```sql
 select *
 from employees
 order by employee_id, department_id desc;
@@ -345,7 +345,7 @@ limit 0,10;
 
 -- 查询第100 ,101条数据
 
-```mysql
+```sql
 select *
 from employees
 limit 99 ,2;
@@ -355,7 +355,7 @@ limit 99 ,2;
 
 -- 查询工资最高的员工
 
-```mysql
+```sql
 select *
 from employees
 order by salary desc
@@ -369,7 +369,7 @@ limit 0,1;
 ### 练习
 -- 1. 查询员工的姓名部门你年薪,按照年薪降序,姓名升序
 
-```mysql
+```sql
 select salary * 12 as y_salary, last_name
 from employees
 order by y_salary desc, last_name asc;
@@ -379,7 +379,7 @@ order by y_salary desc, last_name asc;
 
 -- 2. 查询工资不在8000 到17000 的员工,按照工资降序,显示21 到40位置的数据
 
-```mysql
+```sql
 select *
 from employees
 where not salary > 8000
@@ -390,7 +390,7 @@ limit 20 ,40;
 
 -- 3. 查询邮箱中包含e的员工,并且按照邮箱的字节数降序,再按照部门号升序
 
-```mysql
+```sql
 select email, department_id
 from employees
 where email like '%e%'
@@ -402,7 +402,7 @@ order by length(email) desc, department_id asc;
 ### 练习
 
 ### 多表查询
-```mysql
+```sql
 select *
 from employees;
 select *
@@ -413,7 +413,7 @@ from locations;
 
 
 
-```mysql
+```sql
 select *
 from employees
 where last_name = 'Abel';
@@ -421,7 +421,7 @@ where last_name = 'Abel';
 
 
 
-```mysql
+```sql
 select *
 from departments
 where department_id = 80;
@@ -429,7 +429,7 @@ where department_id = 80;
 
 
 
-```mysql
+```sql
 select *
 from locations
 where location_id = 2500;
@@ -439,7 +439,7 @@ where location_id = 2500;
 
 --  联合查询
 
-```mysql
+```sql
 select employee_id, department_name, departments.department_id
 from employees
          join departments
@@ -450,7 +450,7 @@ where employees.department_id = departments.department_id;
 
 -- 表的别名
 
-```mysql
+```sql
 select e.employee_id, d.department_name, e.department_id
 from employees as e
          join departments as d
@@ -462,7 +462,7 @@ where e.department_id = d.department_id;
 -- 练习
 -- 1. 查询员工的employee_id,last_name,department_name,city
 
-```mysql
+```sql
 select e.employee_id, e.last_name, d.department_name, l.city
 from employees as e,
      departments as d,
@@ -475,14 +475,14 @@ where e.department_id = d.department_id
 
 -- 非等值连接
 
-```mysql
+```sql
 select *
 from job_grades;
 ```
 
 -- 查询员工的工资和对应的等级
 
-```mysql
+```sql
 select e.last_name, e.salary, j.grade_level
 from employees as e,
      job_grades as j
@@ -495,7 +495,7 @@ order by grade_level;
 -- 自连接
 -- 练习: 查询员工id,员工姓名及管理者的id和姓名
 
-```mysql
+```sql
 select t1.employee_id as '员工id', t1.last_name as '员工姓名', t2.employee_id as '管理者id', t2.last_name as '管理者姓名'
 from employees as t1,
      employees as t2
@@ -511,7 +511,7 @@ where t1.manager_id = t2.employee_id;
 
 -- 练习: 查询所有的员工的last_name,department_name信息,
 
-```mysql
+```sql
 select e.last_name, d.department_name
 from employees as e,
      departments as d
@@ -522,7 +522,7 @@ where e.department_id = d.department_id;
 
 -- 99 语法
 
-```mysql
+```sql
 select e.last_name, d.department_name
 from employees as e
          join departments as d
@@ -533,7 +533,7 @@ from employees as e
 
 -- 内连接
 
-```mysql
+```sql
 select e.employee_id, e.last_name, d.department_name, l.city
 from employees as e
          join departments as d
@@ -546,7 +546,7 @@ from employees as e
 
 -- 左外连接
 
-```mysql
+```sql
 select e.employee_id, e.last_name, d.department_name, l.city
 from employees as e
          left outer join departments as d
@@ -560,7 +560,7 @@ order by e.employee_id;
 
 -- 右外连接 outer inner 可以省略
 
-```mysql
+```sql
 select e.employee_id, e.last_name, d.department_name, l.city
 from employees as e
          right outer join departments as d
@@ -578,7 +578,7 @@ order by e.employee_id;
 
 -- 内连接
 
-```mysql
+```sql
 select last_name, department_name
 from employees as t1,
      departments as t2
@@ -589,7 +589,7 @@ where t1.department_id = t2.department_id;
 
 -- 左外连接
 
-```mysql
+```sql
 select last_name, department_name
 from employees as t1
          left join departments as t2
@@ -598,7 +598,7 @@ from employees as t1
 
 -- 右外连接
 
-```mysql
+```sql
 select last_name, department_name
 from employees as t1
          right join departments as t2
@@ -609,7 +609,7 @@ from employees as t1
 
 -- 左外连接 去掉交集
 
-```mysql
+```sql
 select last_name, department_name
 from employees as t1
          left join departments as t2
@@ -621,7 +621,7 @@ where t2.department_id <=> null;
 
 -- 右外连接 去掉交集
 
-```mysql
+```sql
 select t1.last_name, t2.department_name, t2.department_id
 from employees as t1
          right join departments as t2
@@ -633,7 +633,7 @@ where t1.department_id <=> null;
 
 -- 满外连接
 
-```mysql
+```sql
 select last_name, department_name, t2.department_id
 from employees as t1
          left join departments as t2
@@ -651,7 +651,7 @@ where t1.department_id <=> null;
 
 -- 去除交集对应sql joins 的右下图
 
-```mysql
+```sql
 select t1.last_name, t2.department_name, t2.department_id
 from employees as t1
          left join departments as t2
@@ -671,7 +671,7 @@ where t1.department_id <=> null;
 
 -- 原有方式
 
-```mysql
+```sql
 select e.employee_id, e.last_name, d.department_name
 from employees as e
          join departments as d
@@ -681,7 +681,7 @@ from employees as e
 
 -- 99新特性 自然连接 自动查询两个/多个表中相同的字段
 
-```mysql
+```sql
 select e.employee_id, e.last_name, d.department_name
 from employees as e
          natural join departments as d;
@@ -697,7 +697,7 @@ from employees as e
 ### 练习
 -- 1. 显示'所有'的员工的姓名,部门号和部门名称
 
-```mysql
+```sql
 select last_name, d.department_id, d.department_name
 from employees as e
          left join departments as d
@@ -708,7 +708,7 @@ from employees as e
 
 -- 2. 查询90号部门员工的job_id 和90号部门的location_id
 
-```mysql
+```sql
 select e.job_id, e.department_id, d.location_id
 from employees as e,
      departments as d
@@ -720,7 +720,7 @@ where e.department_id = 90
 
 -- 3. 查询'所有'有奖金的员工的last_name,department_name,location_id,city
 
-```mysql
+```sql
 select e.last_name, e.commission_pct, d.department_name, l.location_id, l.city
 from employees as e
          left join departments as d
@@ -734,7 +734,7 @@ where e.commission_pct is not null;
 
 -- 4. 选择city在Toronto工作的员工的last_name,job_id, department_id,department_name
 
-```mysql
+```sql
 select e.last_name, e.job_id, d.department_name, e.department_id, l.location_id, l.city
 from employees as e,
      departments as d,
@@ -748,7 +748,7 @@ where e.department_id = d.department_id
 
 -- 5. 查询员工所在的部门名称,部门地址,姓名,工作,工资,其中员工所在部门的部门名称为'Executive'
 
-```mysql
+```sql
 select d.department_name, e.last_name, e.job_id, e.salary, l.street_address
 from employees as e
          left join departments as d
@@ -762,7 +762,7 @@ where d.department_name = 'Executive';
 
 -- 6. 查询指定员工的姓名,员工号,以及他他他的管理者的姓名员工号(需要起别名)
 
-```mysql
+```sql
 select t1.last_name as '姓名', t1.employee_id as '员工号', t2.last_name as '管理者', t2.employee_id as '管理者员工号'
 from employees as t1
          left join employees as t2
@@ -773,7 +773,7 @@ from employees as t1
 
 -- 7. 查询哪些部门没有员工
 
-```mysql
+```sql
 select *
 from departments as d
          left join employees as e
@@ -785,7 +785,7 @@ where e.department_id is null;
 
 -- 8. 查询哪些城市没有部门
 
-```mysql
+```sql
 select l.city, d.department_id, d.department_name
 from locations as l
          left join departments as d
@@ -797,7 +797,7 @@ where d.department_id is null;
 
 -- 9. 查询部门名为Sales 或 IT的员工信息
 
-```mysql
+```sql
 select *
 from employees as e,
      departments as d
@@ -816,7 +816,7 @@ where e.department_id = d.department_id
 
 
 ### 日期函数
-```mysql
+```sql
 select unix_timestamp(), from_unixtime(unix_timestamp());
 ```
 
@@ -826,7 +826,7 @@ select unix_timestamp(), from_unixtime(unix_timestamp());
 
 -- if
 
-```mysql
+```sql
 select last_name, salary, if(salary > 6000, '高工资', '低工资') as '工资水平'
 from employees
 order by salary;
@@ -838,7 +838,7 @@ order by commission_pct;
 
 -- ifnull
 
-```mysql
+```sql
 select last_name, ifnull(commission_pct, 0) as "奖金"
 from employees
 order by commission_pct;
@@ -848,7 +848,7 @@ order by commission_pct;
 
 -- case when then else end
 
-```mysql
+```sql
 select last_name,
        salary,
        case
@@ -865,7 +865,7 @@ order by salary;
 
 1 .查询部门号为10,20,30 的员工信息 , 若部门号为 10 ,咋打印其工资的1.1倍, 20号工资1.2倍,30号 1.3倍,其他部门为1.4倍
 
-````mysql
+````sql
 select last_name,
        department_id,
        salary  as '基本工资',
@@ -885,7 +885,7 @@ where department_id in (10, 20, 30);
 
 -- 1. 显示系统时间(日期+时间)
 
-```mysql
+```sql
 select now();
 ```
 
@@ -893,7 +893,7 @@ select now();
 
 -- 2. 查询员工号,姓名,工资, 以及工资提高20%后的结果
 
-```mysql
+```sql
 select employee_id, salary, salary * (1 + 0.2)
 from employees;
 ```
@@ -902,7 +902,7 @@ from employees;
 
 -- 3. 将员工的姓名,按照首字母排序,并显示姓名的长度
 
-```mysql
+```sql
 select last_name, length(last_name) as '长度'
 from employees
 order by last_name;
@@ -912,7 +912,7 @@ order by last_name;
 
 -- 4. 查询员工的id,last_name, salary ,并作为一个列输出,别名为out_put
 
-```mysql
+```sql
 select concat_ws('-', employee_id, last_name, salary) as 'out_put'
 from employees
 order by salary;
@@ -922,7 +922,7 @@ order by salary;
 
 -- 5.查询公司员工的工作年数,工作天数,并按照工作年数降序排序
 
-```mysql
+```sql
 select timestampdiff(YEAR, hire_date, now()) as '工作年数',
        timestampdiff(DAY, hire_date, now())  as '工作天数',
        hire_date,
@@ -935,7 +935,7 @@ order by timestampdiff(YEAR, hire_date, now()) desc;
 
 -- 6. 查询员工姓名,hire_date,department_id ,满足以下条件: 雇用时间在1997年之后,department_id 为 80 90或110,commission_pct不为空
 
-```mysql
+```sql
 select last_name, hire_date, department_id, commission_pct
 from employees
 where department_id in (80, 90, 110)
@@ -948,7 +948,7 @@ order by hire_date;
 
 -- 7. 查询入职超过10000天的员工的姓名,入职时间
 
-```mysql
+```sql
 select last_name, hire_date, timestampdiff(DAY, hire_date, now()) as '入职天数'
 from employees
 where timestampdiff(DAY, hire_date, now()) > 10000
@@ -959,7 +959,7 @@ order by timestampdiff(DAY, hire_date, now());
 
 -- 8. 查询产生一下结果 ``<last_name> earns <salary> ,'monthly but wants ' <salary*3>``
 
-```mysql
+```sql
 select concat_ws(' ', last_name, 'earns', truncate(salary, 0), 'monthly but wants ',
                  truncate(salary * 3, 0)) as 'dream salary'
 from employees;
@@ -975,7 +975,7 @@ from employees;
 -- SA_REP   D
 -- ST_CLERK E
 
-```mysql
+```sql
 select job_id,
        case job_id
            when 'AD_PRES ' then 'A'
@@ -995,7 +995,7 @@ order by grade asc;
 ### ---- 聚合函数 -----
 -- 平均值 ,总数
 
-```mysql
+```sql
 select AVG(salary), sum(salary)
 from employees;
 ```
@@ -1004,7 +1004,7 @@ from employees;
 
 -- count 计算指定字段在查询结果中出现的个数
 
-```mysql
+```sql
 select count(job_id), job_id
 from employees
 group by job_id;
@@ -1020,7 +1020,7 @@ from employees;
 
 -- 计算平均奖金率
 
-```mysql
+```sql
 select sum(commission_pct) / count(ifnull(commission_pct, 0)) as '平均奖金率'
 from employees;
 ```
@@ -1031,7 +1031,7 @@ from employees;
 
 -- 查询各个部门的平均工资,最高工资
 
-```mysql
+```sql
 select d.department_id, d.department_name, min(salary), avg(salary), max(salary)
 from employees as e
          right join departments as d
@@ -1043,7 +1043,7 @@ group by department_id;
 
 -- 查询各个department_id,job_id的平均工资
 
-```mysql
+```sql
 select avg(salary), department_id, job_id
 from employees
 group by department_id, job_id;
@@ -1053,7 +1053,7 @@ group by department_id, job_id;
 
 -- with rollup
 
-```mysql
+```sql
 select department_id, avg(salary)
 from employees
 where department_id in (80, 90, 110)
@@ -1066,7 +1066,7 @@ with rollup;
 -- having 用来过滤数据 ,如果过滤条件中使用了聚合函数,则必须使用having来替代where
 -- 查询各个部门中最高工资比10000高的部门信息
 
-```mysql
+```sql
 select max(salary), d.department_name
 from employees as e
          join departments as d
@@ -1080,7 +1080,7 @@ having max(salary) > 10000;
 -- 练习: 查询部门id为10,20,30 40这四个部门中最高工资比10000高的部门信息
 -- 第一种方式 ,推荐使用
 
-```mysql
+```sql
 select max(salary), d.department_id, d.department_name
 from employees as e
          join departments as d
@@ -1091,7 +1091,7 @@ having max(salary) > 10000;
 
 -- 第二种方式
 
-```mysql
+```sql
 select max(salary), d.department_id, d.department_name
 from employees as e
          join departments as d
@@ -1109,14 +1109,14 @@ having max(salary) > 10000
 
 -- 2. 查询公司员工工资的最大值,最小值,平均值,求和
 
-```mysql
+```sql
 select max(salary), min(salary), avg(salary), sum(salary)
 from employees;
 ```
 
 -- 3. 查询各job_id的员工的工资的最大值,最小值,平均值,总和
 
-```mysql
+```sql
 select job_id, max(salary), min(salary), avg(salary), sum(salary)
 from employees
 group by job_id;
@@ -1124,7 +1124,7 @@ group by job_id;
 
 -- 4. 选择具有各个job_id的员工的工人数
 
-```mysql
+```sql
 select job_id, count(*)
 from employees
 group by job_id;
@@ -1132,14 +1132,14 @@ group by job_id;
 
 -- 5. 查询员工最高工资和最低工资的的差距(difference)
 
-```mysql
+```sql
 select max(salary), min(salary), (max(salary) - min(salary)) as 'difference'
 from employees;
 ```
 
 -- 6. 查询各个管理者手下员工的最低工资,其中最低工资不能低于6000,没有管理者的员工不计算在内
 
-```mysql
+```sql
 select manager_id, min(salary)
 from employees
 where salary >= 6000
@@ -1149,7 +1149,7 @@ group by manager_id;
 
 -- 7. 查询所有部门的名字,location_id,员工数量和平均工资,按照平均工资降序
 
-```mysql
+```sql
 select d.department_name, d.location_id, min(e.salary), count(e.employee_id), avg(e.salary)
 from employees as e
          right join departments as d
@@ -1162,7 +1162,7 @@ order by avg(e.salary);
 
 -- 8. 查询每个工种,每个部门的的部门名,工种名和最低工资
 
-```mysql
+```sql
 select min(salary), d.department_name, j.job_title
 from employees as e
          right join departments as d
@@ -1182,7 +1182,7 @@ group by d.department_id, j.job_id;
 -- 1. 谁比Abel工资高
 -- 方式 1,使用子查询
 
-```mysql
+```sql
 select last_name, salary
 from employees
 where salary >= (select salary from employees where last_name = 'Abel')
@@ -1191,7 +1191,7 @@ order by salary;
 
 -- 方式2 ,使用自连接
 
-```mysql
+```sql
 select t1.last_name, t1.salary
 from employees as t1
          join employees as t2
@@ -1201,7 +1201,7 @@ where t1.salary >= t2.salary
 
 -- 2. 查询大于公司平均工资的员工
 
-```mysql
+```sql
 select salary, last_name
 from employees
 where salary > (select avg(salary)
@@ -1212,7 +1212,7 @@ where salary > (select avg(salary)
 
 -- 2. 查询大于部门平均工资的员工
 
-```mysql
+```sql
 select salary, last_name, department_id
 from employees as t1
 where salary >= (select avg(salary) from employees where department_id = t1.department_id)
@@ -1223,7 +1223,7 @@ order by salary;
 
 -- 3. 查询工资大于149号员工工资的员工信息
 
-```mysql
+```sql
 select *
 from employees
 where salary > (select salary from employees where employee_id = 149);
@@ -1233,7 +1233,7 @@ where salary > (select salary from employees where employee_id = 149);
 
 -- 4. 查询job_id与141号员工相同,salary 比143号员工多的员工信息
 
-```mysql
+```sql
 select *
 from employees
 where job_id = (select job_id from employees where employee_id = 141)
@@ -1244,7 +1244,7 @@ where job_id = (select job_id from employees where employee_id = 141)
 
 -- 5. 查询与141号或174号员工的manager_id和department_id相同的,其他员工的
 
-```mysql
+```sql
 employee_id,manager_id,department_id
 select employee_id, manager_id, department_id
 from employees
@@ -1266,7 +1266,7 @@ where manager_id in (select manager_id from employees where employee_id in (141,
 
 -- 6. 查询最低工资大于50号部门最低工资的部门id和最低工资
 
-```mysql
+```sql
 select department_id, min(salary)
 from employees
 group by department_id
@@ -1280,7 +1280,7 @@ order by min(salary);
 -- 若员工的department_id 和 location_id为1800department_id相同
 -- 则country为'Canada',其余则为'USA'
 
-```mysql
+```sql
 select employee_id,
        last_name,
        l.location_id,
@@ -1304,7 +1304,7 @@ from employees as e
 -- in
 -- 1. 查询工资是各部门最低工资的员工
 
-```mysql
+```sql
 select *
 from employees
 where salary in (select min(salary)
@@ -1316,7 +1316,7 @@ where salary in (select min(salary)
 -- all
 -- 1. 返回其他job_id中比job_id为'IT_PROG'部门任一工资低的员工信息
 
-```mysql
+```sql
 select last_name, job_id, salary
 from employees
 where salary < some (select salary from employees where job_id = 'IT_PROG')
@@ -1335,7 +1335,7 @@ where salary in (select salary from employees where job_id = 'IT_PROG')
 
 -- 查询平均工资最低的部门id
 
-```mysql
+```sql
 -- 方法1
 select department_id, avg(salary)
 from employees
@@ -1367,7 +1367,7 @@ having avg(salary) <= all (select avg(salary) as avg_salary
 ### 相关子查询
 -- 1. 查询员工中工资大于本部门平均工资的员工的信息
 
-```mysql
+```sql
 -- 方式1
 select t1.last_name, t1.salary, t1.department_id
 from atguigudb.employees as t1
@@ -1388,7 +1388,7 @@ where t1.department_id = t2.department_id
 
 -- 2. 查询员工的id,salary 按照department_name排序
 
-```mysql
+```sql
 -- 方式一
 select e.department_id, e.salary, department_name
 from atguigudb.employees as e
@@ -1410,7 +1410,7 @@ order by (select d.department_name from atguigudb.departments as d where e.depar
 -- 3. 若employees表中的employee_id 与 job_history表中的employee_id相同的数目不小于2,
 -- 输出这些相同id的员工的employee_id,last_name和其job_id
 
-```mysql
+```sql
 select e.employee_id, e.last_name, e.job_id
 from atguigudb.employees as e
 where (select count(*) from atguigudb.job_history as j where j.employee_id = e.employee_id) >= 2;
@@ -1420,7 +1420,7 @@ where (select count(*) from atguigudb.job_history as j where j.employee_id = e.e
 
 -- 4. 查询公司管理者的employee_id,last_name,job_id,department_id 信息
 
-```mysql
+```sql
 -- 方式1 自连接
 select e.employee_id, e.last_name, e.job_id, e.department_id
 from atguigudb.employees as e
@@ -1442,7 +1442,7 @@ where exists(
 
 -- 5.查询departments表中,不存在于employees表中的 department_id,department_name
 
-```mysql
+```sql
 -- 方法1
 select d.department_id, d.department_name
 from atguigudb.departments as d
@@ -1462,7 +1462,7 @@ where not exists(select * from atguigudb.employees as d where e.department_id = 
 
 -- 1. 查询和Zlotkey 相同部门的员工姓名和工资
 
-```mysql
+```sql
 select last_name, salary, department_id
 from atguigudb.employees
 where department_id = (select department_id
@@ -1474,7 +1474,7 @@ where department_id = (select department_id
 
 -- 2. 查询工资比公司平均工资高的员工的员工号,姓名,和工资
 
-```mysql
+```sql
 select t.last_name, t.employee_id, t.salary
 from atguigudb.employees as t
 where salary > (select avg(salary)
@@ -1486,7 +1486,7 @@ order by salary;
 
 -- 3. 查询工资大于所有job_id ='SA_MAN'的员工的工资定的员工的last_name,job_id, salary
 
-```mysql
+```sql
 select last_name, job_id, salary
 from atguigudb.employees
 where salary > (select max(salary)
@@ -1508,7 +1508,7 @@ order by salary;
 
 -- 4. 查询和姓名中包含字母u的员工在相同部门的员工的员工号和姓名
 
-```mysql
+```sql
 select employee_id, last_name
 from atguigudb.employees
 where department_id in (select department_id
@@ -1521,7 +1521,7 @@ where department_id in (select department_id
 
 -- 5. 查询在部门的location_id为1700的部门工作的员工和员工号
 
-```mysql
+```sql
 select last_name, employee_id, department_id
 from atguigudb.employees
 where department_id in (select department_id
@@ -1531,7 +1531,7 @@ where department_id in (select department_id
 
 -- 6. 查询管理者是King的员工的姓名和工资
 
-```mysql
+```sql
 select last_name, salary, manager_id
 from atguigudb.employees
 where manager_id in (select employee_id from atguigudb.employees where last_name = 'King');
@@ -1541,7 +1541,7 @@ where manager_id in (select employee_id from atguigudb.employees where last_name
 
 -- 7. 查询公司最低的员工信息,last_name ,salary
 
-```mysql
+```sql
 select last_name, salary
 from atguigudb.employees
 where salary = (select min(salary)
@@ -1552,7 +1552,7 @@ where salary = (select min(salary)
 
 -- 8. 查询平均工资最低的部门信息
 
-```mysql
+```sql
 select *
 from atguigudb.departments
 where department_id = (select department_id
@@ -1579,7 +1579,7 @@ where department_id = (select department_id
 
 -- 9. 查询平均工资最低的部门信息,和该部门的平均工资(相关子查询)
 
-```mysql
+```sql
 select *, (select avg(salary) from atguigudb.employees where departments.department_id = employees.department_id)
 from atguigudb.departments
 where department_id = (select department_id
@@ -1593,7 +1593,7 @@ where department_id = (select department_id
 
 -- 10. 查询平均工资最高的job 信息
 
-```mysql
+```sql
 select *
 from atguigudb.jobs
 where job_id = (select job_id
@@ -1609,7 +1609,7 @@ where job_id = (select job_id
 
 -- 11. 查询平均工资高于公司平均工资的部门
 
-```mysql
+```sql
 select department_id
 from atguigudb.employees
 where department_id is not null
@@ -1622,7 +1622,7 @@ having avg(salary) > (select avg(salary)
 
 -- 12. 查询公司中所有manager的详细信息
 
-```mysql
+```sql
 -- 方式1
 select last_name, employee_id, manager_id
 from atguigudb.employees
@@ -1640,7 +1640,7 @@ where employee_id in (select manager_id
 
 -- 13. 各个部门中 最高工资最低的那个部门的最低工资是多少
 
-```mysql
+```sql
 -- 方法1
 select department_id, min(salary)
 from atguigudb.employees
@@ -1686,7 +1686,7 @@ where e.department_id = t.department_id;
 
 -- 14.查询平均工资最高的部门的manager 的详细信息,last_name,department_id ,email , salary
 
-```mysql
+```sql
 select last_name, department_id, email, salary
 from atguigudb.employees
 where employee_id = (select distinct manager_id
@@ -1706,7 +1706,7 @@ where employee_id = (select distinct manager_id
 
 -- 15. 查询部门的部门号,其中不包括job_id是'ST_CLERK'的部门号
 
-```mysql
+```sql
 select department_id
 from atguigudb.departments
 where department_id not in (select distinct department_id
@@ -1718,7 +1718,7 @@ where department_id not in (select distinct department_id
 
 -- 16. 查询所有没有管理者的的员工的last_name
 
-```mysql
+```sql
 select last_name
 from atguigudb.employees
 where manager_id is null;
@@ -1728,7 +1728,7 @@ where manager_id is null;
 
 -- 17.查询员工号,姓名,雇佣时间,工资,其中员工的管理者为'De Haan'
 
-```mysql
+```sql
 select employee_id, last_name, hire_date, salary
 from atguigudb.employees
 where manager_id = (select employee_id
@@ -1740,7 +1740,7 @@ where manager_id = (select employee_id
 
 -- 18.查询各个部门中工资比本部门平均工资高的员工的员工号,姓名和工资(相关子查询)
 
-```mysql
+```sql
 select employee_id, last_name, salary
 from atguigudb.employees as e
 where salary >
@@ -1751,7 +1751,7 @@ where salary >
 
 -- 19. 查询每个部门下的部门人数大于 5的部门名称(相关子查询)
 
-```mysql
+```sql
 select *
 from atguigudb.departments
 where department_id in (select department_id
@@ -1769,7 +1769,7 @@ where 5 < (select count(*) from atguigudb.employees as e where e.department_id =
 
 -- 20. 查询每个国家下的部门个数大于 2 的国家编号(相关子查询)
 
-```mysql
+```sql
 select distinct country_id
 from atguigudb.locations as l
          join departments as d
@@ -1785,7 +1785,7 @@ having count(e.department_id) > 2;
 
 ### ---- 子查询 -----
 
-```mysql
+```sql
 show databases;
 use my_atguigudb;
 show tables;
@@ -1795,7 +1795,7 @@ from employees;
 
 #### 添加一个字段
 
-```mysql
+```sql
 alter table empl
     add employee_id int;
 -- 指定添加的位置 first after
@@ -1810,7 +1810,7 @@ desc empl;
 
 #### 修改表,修改字段的数据类型,和长度
 
-```mysql
+```sql
 alter table empl
     modify employee_id varchar(15) not null default 0;
 desc empl;
@@ -1818,7 +1818,7 @@ desc empl;
 
 #### 重命名表字段
 
-```mysql
+```sql
 alter table empl
     change e_mail email varchar(30);
 desc empl;
@@ -1834,7 +1834,7 @@ alter table empl
 
 #### 重命名表
 
-```mysql
+```sql
 -- 方式1
 rename table employees1 to employees_1;
 desc employees_1;
@@ -1845,13 +1845,13 @@ show tables;
 
 删除表
 
-```mysql
+```sql
 drop table if exists employees1;
 ```
 
 清空表
 
-```mysql
+```sql
 truncate table employees1;
 delete
 from employees1;
@@ -1868,7 +1868,7 @@ from employees1;
 >-- truncate table,一旦执行,数据全部清除,同时数据是不可以回滚的
 >-- delete from 清除数据,但是数据可以实现回滚
 
-```mysql
+```sql
 commit;
 select *
 from employees;
@@ -1884,7 +1884,7 @@ from employees;
 
 #### 删除表,并从另一个表中复制数据
 
-```mysql
+```sql
 drop table employees;
 create table employees as
 select *
@@ -1897,7 +1897,7 @@ from employees;
 
 -- 提交和回滚
 
-```mysql
+```sql
 commit;
 select *
 from employees;
@@ -1915,7 +1915,7 @@ from employees;
 
 -- 1. 创建数据库test01_office ,指明字符集为utf8,并在此数据库下执行一下操作
 
-```mysql
+```sql
 create database if not exists test01_office character set 'utf8';
 show databases;
 ```
@@ -1927,7 +1927,7 @@ show databases;
 | id   | int(7)      |
 | name | varchar(25) |
 
-```mysql
+```sql
 use test01_office;
 show tables;
 create table if not exists dept01
@@ -1942,7 +1942,7 @@ desc dept01;
 
 -- 3.将表departments终端数据插入新表dept02中
 
-```mysql
+```sql
 create table if not exists dept02 as
 select *
 from atguigudb.departments;
@@ -1960,7 +1960,7 @@ from dept02;
 | last_name  | varchar(25) |
 | dept_id    | int(7)      |
 
-```mysql
+```sql
 create table if not exists emp01
 (
     id         tinyint,
@@ -1973,7 +1973,7 @@ desc emp01;
 
 -- 5. 将last_name的长度增加到50
 
-```mysql
+```sql
 alter table emp01
     modify last_name varchar(50);
 desc emp01;
@@ -1981,7 +1981,7 @@ desc emp01;
 
 -- 6. 根据表employees创建emp02
 
-```mysql
+```sql
 create table if not exists emp02 as
 select *
 from atguigudb.employees
@@ -1991,21 +1991,21 @@ desc emp02;
 
 -- 7. 删除表emp01
 
-```mysql
+```sql
 drop table emp01;
 show tables;
 ```
 
 -- 8. 将表emp02重命名为emp01
 
-```mysql
+```sql
 rename table emp02 to emp01;
 show tables;
 ```
 
 -- 9. 在表dept02和emp01中添加新列test_column ,并检查所有的操作
 
-```mysql
+```sql
 alter table dept02
     add column test_column varchar(25);
 desc dept02;
@@ -2016,7 +2016,7 @@ desc emp01;
 
 -- 10. 删除表emp01中的列department_id
 
-```mysql
+```sql
 alter table emp01
     drop column department_id;
 desc emp01;
@@ -2026,7 +2026,7 @@ desc emp01;
 
 -- 11. 创建数据库test02_market
 
-```mysql
+```sql
 create database if not exists test02_market;
 show databases;
 use test02_market;
@@ -2042,7 +2042,7 @@ use test02_market;
 | c_city   | varchar(50) |
 | c_birth  | date        |
 
-```mysql
+```sql
 create table if not exists customers
 (
     c_num    int,
@@ -2056,14 +2056,14 @@ desc customers;
 
 -- 13. 将c_contact字段移动到c_birth字段后面
 
-```mysql
+```sql
 alter table customers
     modify c_concat varchar(50) after c_birth;
 ```
 
 -- 14. 将c_name字段数据类型改为varchar(70)
 
-```mysql
+```sql
 alter table customers
     modify c_name varchar(70);
 desc customers;
@@ -2071,14 +2071,14 @@ desc customers;
 
 -- 15. 将c_concat字段改名为c_phone
 
-```mysql
+```sql
 alter table customers rename column c_concat to c_phone;
 desc customers;
 ```
 
 -- 16. 增加c_gender字段到c_name后面,数据类型为char(1)
 
-```mysql
+```sql
 alter table customers
     add c_gender char(1) after c_name;
 desc customers;
@@ -2086,14 +2086,14 @@ desc customers;
 
 -- 17. 将表名改为customers_info
 
-```mysql
+```sql
 rename table customers to customers_info;
 show tables;
 ```
 
 -- 18. 删除字段_city
 
-```mysql
+```sql
 alter table customers
     drop column c_city;
 desc customers;
@@ -2102,7 +2102,7 @@ desc customers;
 
 
 ## 数据的处理-增删改
-```mysql
+```sql
 use atguigudb;
 show tables;
 create table emp
@@ -2120,7 +2120,7 @@ from emp;
 
 
 ### 添加数据
-```mysql
+```sql
 -- 方式1,按照表字段顺序添加
 insert into emp
 values (1, 'Tom', '2021-11-11', 3400.12);
@@ -2147,7 +2147,7 @@ from emp;
 
 #### 删除数据,某一行,或者多行
 
-```mysql
+```sql
 delete
 from emp
 where id in (50, 60, 80);
@@ -2163,7 +2163,7 @@ order by id;
 
 #### 更新数据/更新数据
 
-```mysql
+```sql
 update emp
 set hire_date = curdate()
 where id = 1;
@@ -2183,7 +2183,7 @@ order by id;
 
 #### 计算列
 
-````mysql
+````sql
 create table test
 (
     a int,
@@ -2208,7 +2208,7 @@ show tables;
 
 #### DDL DML综合练习
 
-```mysql
+```sql
 -- 1.创建数据库library
 show databases;
 use my_atguigudb;
@@ -2384,7 +2384,7 @@ select database();
 show tables;
 
 ### 练习
-```mysql
+```sql
 -- 1.创建数据库dbtest11
 create database if not exists db_test_11 character set 'utf8';
 -- 2.运行以下脚本创建表my_employees;
@@ -2484,7 +2484,7 @@ truncate table my_employees;
 
 
 ### 练习2
-```mysql
+```sql
 -- 1.使用现有数据库
 use db_test_11;
 -- 2.创建表pet
@@ -2555,7 +2555,7 @@ from pet;
 
 
 ### 练习3
-```mysql
+```sql
 -- 1.使用数据库db_test_11
 select database();
 use db_test_11;
@@ -2599,7 +2599,7 @@ where name like '%小%';
 
 #### 数据类型概述
 
-```mysql
+```sql
 -- 1.创建数据库指定字符集
 create database if not exists db_test_11 character set 'utf8';
 -- 2.整形数据类型
@@ -2638,7 +2638,7 @@ show tables;
 
 创建主表
 
-````mysql
+````sql
 create table if not exists my_departments
 (
     department_id   int primary key auto_increment,
@@ -2650,7 +2650,7 @@ create table if not exists my_departments
 
 再创建从表
 
-```mysql
+```sql
 create table if not exists my_employees
 (
     employee_id   int primary key auto_increment,
@@ -2662,20 +2662,19 @@ create table if not exists my_employees
 
 表级约束
 
-    ```mysql
-    constraint fk_empl_dept_id foreign key (department_id) references my_departments (department_id),
-        foreign key (department_id) references my_departments (department_id) on update cascade on delete set null
-    );
-    
-    desc my_employees;
-    desc my_departments;
-    ```
+```sql
+constraint fk_empl_dept_id foreign key (department_id) references my_departments (department_id),
+    foreign key (department_id) references my_departments (department_id) on update cascade on delete set null
+);
 
+desc my_employees;
+desc my_departments;
+```
 
 
 -- 查询所有约束
 
-```mysql
+```sql
 select *
 from information_schema.TABLE_CONSTRAINTS
 where TABLE_NAME = 'my_employees';
@@ -2685,7 +2684,7 @@ where TABLE_NAME = 'my_employees';
 
 -- 先在主表插入数据
 
-````mysql
+````sql
 insert into my_departments (department_id, department_name)
 VALUES (10, 'IT');
 select *
@@ -2694,7 +2693,7 @@ from my_departments;
 
 -- 再在从表插入数据
 
-```mysql
+```sql
 insert into my_employees(employee_id, employee_name, department_id)
 values (1001, '宋红康', 10);
 select *
@@ -2707,7 +2706,7 @@ from my_employees;
 
 从表中设置
 
-```mysql
+```sql
 foreign key (department_id) references  my_departments(department_id) on update cascade on delete set null
 ```
 
@@ -2715,7 +2714,7 @@ foreign key (department_id) references  my_departments(department_id) on update 
 
 示例: 从表
 
-```mysql
+```sql
 drop table my_employees;
 create table if not exists my_employees
 (
@@ -2730,7 +2729,7 @@ foreign key (department_id) references my_departments (department_id) on update 
 
 -- 删除外键约束
 
-```mysql
+```sql
 select *
 from information_schema.TABLE_CONSTRAINTS
 where TABLE_NAME = 'my_employees';
@@ -2742,7 +2741,7 @@ alter table my_employees
 
 -- 查看表的索引
 
-```mysql
+```sql
 show index from my_employees;
 
 alter table  my_employees drop index <索引名>
@@ -2753,7 +2752,7 @@ alter table  my_employees drop index <索引名>
 ## 练习
 已经存在数据库test04_emp，两张表emp2和dept2
 
-```mysql
+```sql
 CREATE DATABASE test04_emp;
 use test04_emp;
 CREATE TABLE emp2
@@ -2770,7 +2769,7 @@ CREATE TABLE dept2
 
 
 
-```mysql
+```sql
 -- 1. 向表emp2的id列中添加PRIMARY KEY约束
 
 alter table emp2
@@ -2803,7 +2802,7 @@ where TABLE_NAME = 'emp2';
 
 > 承接《第11章_数据处理之增删改》的综合案例。
 
-```mysql
+```sql
 -- 1、创建数据库test01_library
 
 create database if not exists test01_library character set 'utf8';
@@ -2842,7 +2841,7 @@ alter table books
 
 练习3
 
-```mysql
+```sql
 #1. 创建数据库test04_company
 create database if not exists test04_company character set 'utf8';
 use;
@@ -2907,7 +2906,7 @@ desc employees_info;
 
 
 ## 视图
-```mysql
+```sql
 show tables;
 create view view_emp
 as
@@ -2946,7 +2945,7 @@ from v1_employees;
 
 针对多表
 
-```mysql
+```sql
 show tables;
 create table departments as
 select *
@@ -2962,7 +2961,7 @@ from v_empl_dept;
 
 利用视图对数据进行格式化
 
-```mysql
+```sql
 create view v1_empl_dept(name, department_id, department_name) as
 select concat_ws(',', e.first_name, e.last_name) as name, d.department_id, department_name
 from employees as e
@@ -2976,7 +2975,7 @@ from v1_empl_dept;
 
 基于视图创建视图
 
-```mysql
+```sql
 create view v2_empt_dept as
 select *
 from v1_empl_dept;
@@ -2986,25 +2985,25 @@ from v2_empt_dept;
 
 查看视图结构
 
-```mysql
+```sql
 desc v2_empt_dept;
 ```
 
 查看视图属性信息
 
-```mysql
+```sql
 show table status like 'v2_empt_dept';
 ```
 
 查看视图定义信息
 
-```mysql
+```sql
 show create view v2_empt_dept;
 ```
 
 修改和删除视图中的数据,不建议更新和删除视图中的数据
 
-```mysql
+```sql
 -- 可以更新
 
 update v2_empt_dept
@@ -3036,7 +3035,7 @@ where department_id = 100;
 
 ## 存储过程与函数
 
-```mysql
+```sql
 -- 创建存储过程
 
 delimiter $
@@ -3107,7 +3106,7 @@ select @sal as sal;
 
 #### 练习
 
-```mysql
+```sql
 delimiter $
 create procedure select_manager_name_by_employee_name(inout employee_name varchar(25))
 begin
@@ -3128,7 +3127,7 @@ select @employee_name;
 
 ### 存储函数
 
-```mysql
+```sql
 -- 练习,创建存储函数,参数为空,查询Abel的email
 
 delimiter $
@@ -3159,7 +3158,7 @@ select select_email_by_id(103) as email;
 
 ## 系统变量和会话变量
 
-```mysql
+```sql
 show global variables;
 show session variables;
 
@@ -3170,7 +3169,7 @@ select @@session.binlog_row_image;
 
 ## 自定义变量
 
-```mysql
+```sql
 # 方式一
 set @m1 = 10;
 set @m2 := 20;
@@ -3190,7 +3189,7 @@ select @avg_salary;
 
 ## 局部变量
 
-```mysql
+```sql
 delimiter $
 create procedure select_emp_info()
 begin
@@ -3211,7 +3210,7 @@ call select_emp_info();
 
 ### 分支结构之if
 
-```mysql
+```sql
 delimiter $
 create procedure select_salary_info()
 begin
@@ -3229,7 +3228,7 @@ call select_salary_info();
 
 ### 练习1
 
-```mysql
+```sql
 delimiter $
 create procedure test_if01()
 begin
@@ -3271,7 +3270,7 @@ call test_if01();
 
 
 
-```mysql
+```sql
 delimiter $
 create procedure get_count_by_limit_total_salary(in limit_total_salary double, out total_count int)
 begin
@@ -3283,17 +3282,17 @@ begin
 
 ### 申明游标
 
-```mysql
+```sql
 declare emp_salary_cursor cursor for select salary from employees order by salary desc;
 ```
 ### 打开游标
 
-```mysql
+```sql
 open emp_salary_cursor;
 ```
 ### 获取游标数据
 
-```mysql
+```sql
 repeat
     fetch emp_salary_cursor into cursor_salary;
     set sum_salary = sum_salary + cursor_salary;
@@ -3304,7 +3303,7 @@ set total_count = emp_count;
 ```
 ### 关闭游标
 
-```mysql
+```sql
 close emp_salary_cursor;
 end $
 delimiter ;
@@ -3320,7 +3319,7 @@ select @total_count;
 >
 > 误，从而使得添加失败。
 
-```mysql
+```sql
 show tables;
 
 delimiter $

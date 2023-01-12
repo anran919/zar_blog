@@ -78,6 +78,14 @@ export const zhNavbar = navbar([
           { text: "MySQL学习记录", icon: "MySQL", link: "MySQL学习记录" }
         ],
       },
+      {
+        text: "其他",
+        icon: "others",
+        prefix: "others/",
+        children: [
+          { text: "Mac环境下使用docker部署可道云", icon: "docker", link: "Mac环境下使用docker部署可道云" }
+        ],
+      },
       { text: "怎样选择基金", icon: "edit", link: "怎样选择基金" },
     ],
   },

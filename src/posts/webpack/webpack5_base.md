@@ -1,4 +1,5 @@
 ---
+title: webpack5的常用基本配置
 icon: webpack
 date: 2022年12月28日17:49:51
 category:
@@ -14,7 +15,9 @@ star: true
 
 # webpack5_base
 
-###  [webpack5参考文档地址](https://webpack.docschina.org/)
+<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=2&id=1430319727&auto=1&height=66"></iframe>
+
+> ### [webpack5参考文档地址](https://webpack.docschina.org/)
 
 ### oneOf
 
@@ -135,7 +138,7 @@ new TerserPlugin(
 - babel 为编译的每个文件插入了辅助代码,使代码体积过大!
 - ```@babel/plugin-transform-runtime```禁用了 Babel 自动对每个文件的 runtime 注入,而是引入 `@babel/plugin-transform-runtime` 并且使所有辅助代码从这里引用。
 
-```node
+```sh
 npm i @babel/runtime
 npm i -s -D babel/plugin-transform-runtime
 ```
@@ -158,20 +161,20 @@ npm i -s -D babel/plugin-transform-runtime
 
 ### 本地压缩图片 image-minimizer-webpack-plugin
 
-```
+```shell
 npm install image-minimizer-webpack-plugin --save-dev
 ```
 
 - 无损压缩
 
-  ```npm
-  npm install imagemin-gifsicle imagemin-jpegtran imagemin-optipng imagemin-svgo --save-dev
-  ```
+```shell
+npm install imagemin-gifsicle imagemin-jpegtran imagemin-optipng imagemin-svgo --save-dev
+```
 
 - 有损压缩
 
-  ```npm
-  npm install imagemin-gifsicle imagemin-mozjpeg imagemin-pngquant imagemin-svgo --save-dev
+```sh
+npm install imagemin-gifsicle imagemin-mozjpeg imagemin-pngquant imagemin-svgo --save-dev
   ```
 
 我的环境npm 安装失败,具体参考webpack官网:[ImageMinimizerWebpackPlugin](https://webpack.docschina.org/plugins/image-minimizer-webpack-plugin/#root)
@@ -315,47 +318,47 @@ output: {
 
 - cors-js 怎么用
 
-    - ```
-    npm i core-js
-    ```
+```shell
+npm i core-js
+```
 
-    - ```javascript
-    /**
-     *  webpack 入口文件 main.js
-     *
-     * 运行指令
-     */
-    import 'core-js'; // <- at the top of your entry point 全局引入,这样会增加打包体积
-    import './src/css/index.css'
-    import './src/css/index.less'
-    import { add } from './src/index'
-    import { count } from './src/utils/math'
-    console.log('== add == ', add(1, 2))
-    ```
+```javascript
+/**
+ *  webpack 入口文件 main.js
+ *
+ * 运行指令
+ */
+import 'core-js'; // <- at the top of your entry point 全局引入,这样会增加打包体积
+import './src/css/index.css'
+import './src/css/index.less'
+import { add } from './src/index'
+import { count } from './src/utils/math'
+console.log('== add == ', add(1, 2))
+```
 
-    - 按需引入
+- 按需引入
 
-      ```javascript
-      import 'core-js/es/promise' // 按需引入
-      ```
+  ```javascript
+  import 'core-js/es/promise' // 按需引入
+  ```
 
-    - 按需要加载自动引入,在babel中配置参数,不需要在入口文件手动引入core-js,[参考文档](https://www.babeljs.cn/docs/babel-preset-env)
+- 按需要加载自动引入,在babel中配置参数,不需要在入口文件手动引入core-js,[参考文档](https://www.babeljs.cn/docs/babel-preset-env)
 
-      ```javascript
-      // babel.config.js
-      module.exports = {
-        presets: [
-          [
-            "@babel/preset-env",
-            {
-              "useBuiltIns": "usage", // usage|entry , 按需要加载自动引入
-              "corejs": "3.22"
-            }
-          ]
-        ],
-        ...
-      }
-      ```
+  ```javascript
+  // babel.config.js
+  module.exports = {
+    presets: [
+      [
+        "@babel/preset-env",
+        {
+          "useBuiltIns": "usage", // usage|entry , 按需要加载自动引入
+          "corejs": "3.22"
+        }
+      ]
+    ],
+    ...
+  }
+  ```
 
 ### PWA
 
@@ -363,7 +366,7 @@ output: {
 
 - 下载包,[参考文档](https://webpack.docschina.org/guides/progressive-web-application/#adding-workbox)
 
-  ```
+  ```sh
   npm install workbox-webpack-plugin --save-dev
   ```
 
@@ -402,7 +405,7 @@ output: {
 
 - 全局安装 serve ,本地部署打包生成的dist文件,
 
-  ```javascript
+  ```sh
   npm i serve -g
   serve dist
   ```

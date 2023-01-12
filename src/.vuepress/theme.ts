@@ -3,7 +3,7 @@ import {enNavbar, zhNavbar} from "./navbar/index.js";
 import {enSidebar, zhSidebar} from "./sidebar/index.js";
 
 export default hopeTheme({
-    hostname: "https://mister-hope.github.io",
+    hostname: "https://github.com/",
 
     author: {
         name: "张安然",
@@ -22,7 +22,7 @@ export default hopeTheme({
 
     logo: "/logo.svg",
 
-    repo: "vuepress-theme-hope/vuepress-theme-hope",
+    repo: "/anran919",
 
     docsDir: "docs",
 
@@ -82,7 +82,7 @@ export default hopeTheme({
             // sidebar
             sidebar: zhSidebar,
 
-            footer: "默认页脚",
+            footer: "从此故乡只有冬，再无春夏秋",
 
             displayFooter: true,
 

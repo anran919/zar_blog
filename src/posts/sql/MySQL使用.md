@@ -2,7 +2,7 @@
 title: MySQL使用.md
 date: 2017-01-20 10:22:04
 category:
-  - MySQL
+  - SQL
 tag:
   - MySQL
 ---
